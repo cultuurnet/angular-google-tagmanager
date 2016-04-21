@@ -2,7 +2,7 @@
   "name": "cultuurnet-google-tagmanager",
   "description": "Angular google tag manager for cultuurnet",
   "main": "src/cultuurnet-google-tagmanager.module.js",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "authors": [
     "zuuperman <nils.destoop@gmail.com>"
   ],
