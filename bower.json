@@ -1,0 +1,18 @@
+{
+  "name": "cultuurnet-google-tagmanager",
+  "description": "Angular google tag manager for cultuurnet",
+  "main": "",
+  "authors": [
+    "zuuperman <nils.destoop@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/cultuurnet/angular-google-tagmanager",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
