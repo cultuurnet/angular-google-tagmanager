@@ -9,6 +9,10 @@
   "license": "MIT",
   "homepage": "https://github.com/cultuurnet/angular-google-tagmanager",
   "private": true,
+  "dependencies": {
+    "angular": "^1.3.0",
+    "lodash": "^4.6.1"
+  },
   "ignore": [
     "**/.*",
     "node_modules",

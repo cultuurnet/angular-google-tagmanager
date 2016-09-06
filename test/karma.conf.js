@@ -28,7 +28,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'test/lib/angular/angular.min.js',
+      'bower_components/angular/angular.min.js',
+      'bower_components/lodash/dist/lodash.min.js',
       'test/lib/lodash/lodash.min.js',
       'src/*.js',
       "test/spec/**/*.js",
