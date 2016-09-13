@@ -19,7 +19,43 @@ angular
         initGaTagManager($window, $document, containerId);
       }
     }
-  ]);
+  ])
+  .service('GoogleTagmanagerService', GoogleTagmanagerService);
+
+/* @ngInject */
+function GoogleTagmanagerService() {
+
+  /*jshint validthis: true */
+  var service = this;
+
+  /**
+   * Return all installed trackers.
+   */
+  service.getTrackers = function() {
+    return ga.getAll();
+  };
+
+  /**
+   * Is google analytics enabled.
+   */
+  service.isEnabled = function () {
+    return (typeof ga === 'function');
+  };
+
+  /**
+   * Set a GA variable.
+   */
+  service.setVariable = function(trackerName, variableName, value) {
+    ga(trackerName + '.set', variableName, value);
+  };
+
+  /**
+   * Set a GA variable.
+   */
+  service.sendEvent = function(trackerName, event) {
+    ga(trackerName + '.send', event);
+  };
+}
 
 /**
  * Init the google tag manager.

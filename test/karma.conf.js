@@ -30,7 +30,7 @@ module.exports = function(config) {
     files: [
       'bower_components/angular/angular.min.js',
       'bower_components/lodash/dist/lodash.min.js',
-      'test/lib/lodash/lodash.min.js',
+      'bower_components/angular-mocks/angular-mocks.js',
       'src/*.js',
       "test/spec/**/*.js",
       "test/spec/**/*.*.js",
