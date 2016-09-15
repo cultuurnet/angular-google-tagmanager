@@ -66,6 +66,10 @@ module.exports = function(config) {
       "karma-jasmine"
     ],
 
+    preprocessors: {
+      'src/*.js': ['coverage']
+    },
+
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
     singleRun: false,
