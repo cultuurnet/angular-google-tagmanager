@@ -20,10 +20,10 @@ angular
       }
     }
   ])
-  .service('GoogleTagmanagerService', GoogleTagmanagerService);
+  .service('GoogleAnalyticsService', GoogleAnalyticsService);
 
 /* @ngInject */
-function GoogleTagmanagerService() {
+function GoogleAnalyticsService() {
 
   /*jshint validthis: true */
   var service = this;

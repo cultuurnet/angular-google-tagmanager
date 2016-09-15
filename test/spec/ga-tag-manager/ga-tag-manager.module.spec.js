@@ -2,7 +2,7 @@
 
 describe('Module: GaTagManager', function () {
 
-    var googleTagmanagerService, $window, $document;
+    var googleAnalyticsService, $window, $document;
 
     function Tracker(name) {
         this.name = name;
@@ -14,7 +14,7 @@ describe('Module: GaTagManager', function () {
     beforeEach(inject(function (_$window_, _$document_) {
         $window = _$window_;
         $document = _$document_;
-        googleTagmanagerService = new GoogleTagmanagerService();
+        googleAnalyticsService = new GoogleAnalyticsService();
         window.ga = function() {}
         window.ga.getAll = function() {
             return [
@@ -57,7 +57,7 @@ describe('Module: GaTagManager', function () {
 
     it('correctly marks ga as active', function () {
         enableTagManager();
-        expect(googleTagmanagerService.isEnabled(), true);
+        expect(googleAnalyticsService.isEnabled(), true);
     });
 
     it('correctly sets ga variables', function () {
@@ -66,7 +66,7 @@ describe('Module: GaTagManager', function () {
 
         var spy = spyOn(window, 'ga');
 
-        googleTagmanagerService.setVariable('test', 'testvar', 'testval');
+        googleAnalyticsService.setVariable('test', 'testvar', 'testval');
         expect(spy).toHaveBeenCalledWith('test.set', 'testvar', 'testval');
     });
 
@@ -77,7 +77,7 @@ describe('Module: GaTagManager', function () {
 
         var spy = spyOn(window, 'ga');
 
-        googleTagmanagerService.sendEvent('test', 'testevent');
+        googleAnalyticsService.sendEvent('test', 'testevent');
         expect(spy).toHaveBeenCalledWith('test.send', 'testevent');
     });
 
