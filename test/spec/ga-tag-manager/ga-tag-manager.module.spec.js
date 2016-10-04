@@ -15,10 +15,12 @@ describe('Module: GaTagManager', function () {
         $window = _$window_;
         $document = _$document_;
         googleAnalyticsService = new GoogleAnalyticsService();
+
         window.ga = function() {}
         window.ga.getAll = function() {
             return [
-                new Tracker('name')
+                new Tracker('trackerA'),
+                new Tracker('trackerB')
             ];
         }
 
@@ -60,25 +62,46 @@ describe('Module: GaTagManager', function () {
         expect(googleAnalyticsService.isEnabled(), true);
     });
 
-    it('correctly sets ga variables', function () {
+    it('correctly sets ga variables for a given tracker name', function () {
 
         enableTagManager();
 
         var spy = spyOn(window, 'ga');
 
-        googleAnalyticsService.setVariable('test', 'testvar', 'testval');
+        googleAnalyticsService.setVariable('testvar', 'testval', 'test');
         expect(spy).toHaveBeenCalledWith('test.set', 'testvar', 'testval');
     });
 
-
-    it('correctly sends ga events', function () {
+    it('correctly sets ga variables for all tracker names', function () {
 
         enableTagManager();
 
         var spy = spyOn(window, 'ga');
 
-        googleAnalyticsService.sendEvent('test', 'testevent');
+        googleAnalyticsService.setVariable('testvar', 'testval');
+        expect(spy).toHaveBeenCalledWith('trackerA.set', 'testvar', 'testval');
+        expect(spy).toHaveBeenCalledWith('trackerB.set', 'testvar', 'testval');
+    });
+
+    it('correctly sends ga events for a given tracker name', function () {
+
+        enableTagManager();
+
+        var spy = spyOn(window, 'ga');
+
+        googleAnalyticsService.sendEvent('testevent', 'test');
         expect(spy).toHaveBeenCalledWith('test.send', 'testevent');
+    });
+
+    it('correctly sends ga events for all trackers', function () {
+
+        enableTagManager();
+
+        var spy = spyOn(window, 'ga');
+
+        googleAnalyticsService.sendEvent('testevent');
+        expect(spy).toHaveBeenCalledWith('trackerA.send', 'testevent');
+        expect(spy).toHaveBeenCalledWith('trackerB.send', 'testevent');
     });
 
 });

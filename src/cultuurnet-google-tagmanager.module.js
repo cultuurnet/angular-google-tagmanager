@@ -45,15 +45,31 @@ function GoogleAnalyticsService() {
   /**
    * Set a GA variable.
    */
-  service.setVariable = function(trackerName, variableName, value) {
-    ga(trackerName + '.set', variableName, value);
+  service.setVariable = function(variableName, value, trackerName) {
+    if (trackerName) {
+      ga(trackerName + '.set', variableName, value);
+    }
+    else {
+      var trackers = service.getTrackers();
+      for (var i = 0; i < trackers.length; i++) {
+        ga(trackers[i].get('name') + '.set', variableName, value);
+      }
+    }
   };
 
   /**
    * Set a GA variable.
    */
-  service.sendEvent = function(trackerName, event) {
-    ga(trackerName + '.send', event);
+  service.sendEvent = function(event, trackerName) {
+    if (trackerName) {
+      ga(trackerName + '.send', event);
+    }
+    else {
+      var trackers = service.getTrackers();
+      for (var i = 0; i < trackers.length; i++) {
+        ga(trackers[i].get('name') + '.send', event);
+      }
+    }
   };
 }
 
